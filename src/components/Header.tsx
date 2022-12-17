@@ -1,12 +1,15 @@
-import React from "react"
-import logoSvg from "../assets/img/pizza-logo.svg"
-import { Link } from "react-router-dom"
-import Search from "./Search"
+import { FC } from "react"
 import { useSelector } from "react-redux"
+import { Link, useLocation } from "react-router-dom"
+import logoSvg from "../assets/img/pizza-logo.svg"
+import { cartSelector } from "../store/slices/cartSlice"
+import Search from "./Search"
 
-const Header = () => {
-  const { items, totalPrice } = useSelector((state) => state.cart)
+const Header: FC = () => {
+  const { items, totalPrice } = useSelector(cartSelector)
   const totalCount = items.reduce((sum, obj) => obj.count + sum, 0)
+  const { pathname } = useLocation()
+
   return (
     <div className="header">
       <div className="container">
@@ -19,7 +22,7 @@ const Header = () => {
             </div>
           </div>
         </Link>
-        <Search />
+        {pathname !== "/cart" && <Search />}
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
             <span>{totalPrice} ₽</span>

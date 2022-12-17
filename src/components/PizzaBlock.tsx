@@ -1,34 +1,40 @@
-import React, { useState } from "react"
+import { FC, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addItem } from "../store/slices/cartSlice"
+import { IPizza, pizzaDoughTypes } from "src/types/pizza"
+import {
+  ICartItem,
+  addItem,
+  cartItemSelectorById,
+} from "../store/slices/cartSlice"
 
-const typesDough = ["тонкое", "традиционное"]
+const typesDough: pizzaDoughTypes[] = ["тонкое", "традиционное"]
 
-const PizzaBlock = ({
-  id,
-  title = "Чизбургер пицца",
-  price = 415,
-  imageUrl = "https://dodopizza-a.akamaihd.net/static/Img/Products/" +
-    "Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
-  sizes = [26, 30, 40],
-  types = [0, 1],
-}) => {
+const PizzaBlock: FC<IPizza> = (props) => {
+  const {
+    id,
+    title = "Чизбургер пицца",
+    price = 415,
+    imageUrl = "https://dodopizza-a.akamaihd.net/static/Img/Products/" +
+      "Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
+    sizes = [26, 30, 40],
+    types = [0, 1],
+  } = props
   const dispatch = useDispatch()
   const [activeSize, setActiveSize] = useState(0)
   const [activeType, setActiveType] = useState(0)
-  const cartItem = useSelector((state) =>
-    state.cart.items.find((obj) => obj.id === id)
-  )
+  const cartItem = useSelector(cartItemSelectorById(id))
+
   const addedCount = cartItem ? cartItem.count : 0
 
   const onClickAdd = () => {
-    const item = {
+    const item: ICartItem = {
       id,
       title,
       price,
       imageUrl,
       type: typesDough[activeType],
       size: sizes[activeSize],
+      count: 0,
     }
     dispatch(addItem(item))
   }
