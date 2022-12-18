@@ -4,16 +4,13 @@ import qs from "qs"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/store/store"
-import Categories from "../components/Categories"
-import PizzaBlock from "../components/PizzaBlock"
-import Skeleton from "../components/Skeleton"
-import Sort, { list } from "../components/Sort"
-import {
-  IFilterSliceState,
-  filterSelector,
-  setFilters,
-} from "../store/slices/filterSlice"
-import { fetchPizzas, pizzaSelector } from "../store/slices/pizzaSlice"
+import { IFilterSliceState, setFilters } from "../store/slices/filterSlice"
+import { filterSelector } from "src/store/selectors/filter"
+import { pizzaSelector } from "src/store/selectors/pizza"
+import { fetchPizzas } from "src/utils/fetch"
+import { Categories, PizzaBlock, Skeleton, Sort } from "../components/EXPORT"
+import { categories } from "src/components/Categories"
+import { list } from "src/components/Sort"
 
 const Home: FC = () => {
   const dispatch = useAppDispatch()
@@ -37,40 +34,40 @@ const Home: FC = () => {
     window.scroll(0, 0)
   }, [categoryId, dispatch, sortType.sort])
 
-  // //Если изменили параметры и был первый рендер
-  // useEffect(() => {
-  //   if (isMounted.current) {
-  //     const queryStr = qs.stringify({
-  //       sortType: sortType.sort,
-  //       categoryId,
-  //     })
+  //Если изменили параметры и был первый рендер
+  useEffect(() => {
+    if (isMounted.current) {
+      const queryStr = qs.stringify({
+        sortType: sortType.sort,
+        categoryId,
+      })
 
-  //     navigate(`?${queryStr}`)
-  //   }
-  //   isMounted.current = true
-  // }, [categoryId, navigate, sortType])
+      navigate(`?${queryStr}`)
+    }
+    isMounted.current = true
+  }, [categoryId, navigate, sortType])
 
-  // //Если был первый рендер, то проверяем URL-парам и сохраняем в редакс
-  // useEffect(() => {
-  //   if (window.location.search) {
-  //     const params = qs.parse(
-  //       window.location.search.substring(1)
-  //     ) as unknown as IFilterSliceState
+  //Если был первый рендер, то проверяем URL-парам и сохраняем в редакс
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(
+        window.location.search.substring(1)
+      ) as unknown as IFilterSliceState
 
-  //     const sort = list.find((obj) => obj.sort === params.sort.sort)
+      const sort = list.find((obj) => obj.sort === params.sort.sort)
 
-  //     dispatch(
-  //       setFilters({
-  //         categoryId: params.categoryId,
-  //         searchValue: params.searchValue,
-  //         sort: sort || list[0],
-  //       })
-  //     )
+      dispatch(
+        setFilters({
+          categoryId: params.categoryId,
+          searchValue: params.searchValue,
+          sort: sort || list[0],
+        })
+      )
 
-  //     getPizzas()
-  //     isNeedSearch.current = true
-  //   }
-  // }, [])
+      getPizzas()
+      isNeedSearch.current = true
+    }
+  }, [])
 
   useEffect(() => {
     getPizzas()
@@ -82,7 +79,7 @@ const Home: FC = () => {
         <Categories />
         <Sort />
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <h2 className="content__title">{categories[categoryId]}</h2>
       {status === "error" ? (
         <div className="content__error-info">
           <h2>Произошла ошибка</h2>

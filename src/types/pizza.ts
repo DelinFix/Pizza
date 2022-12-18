@@ -31,3 +31,7 @@ export interface IPizzaInCart {
   type: pizzaDoughTypes
   count: number
 }
+
+export interface ICartItem extends IPizzaInCart {
+  count: number
+}

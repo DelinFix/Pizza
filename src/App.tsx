@@ -1,19 +1,23 @@
 import { Route, Routes } from "react-router-dom"
-import MainLayout from "./Layout/MainLayout"
-import Cart from "./pages/Cart"
-import Home from "./pages/Home"
-import NotFound from "./pages/NotFound"
+import React, { lazy } from "react"
 import "./scss/app.scss"
+
+const Home = lazy(() => import("./pages/Home"))
+const Cart = lazy(() => import("./pages/Cart"))
+const NotFound = lazy(() => import("./pages/NotFound"))
+const MainLayout = lazy(() => import("./Layout/MainLayout"))
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route path="" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+    <React.Suspense fallback={<div>Загрузка...</div>}>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </React.Suspense>
   )
 }
 

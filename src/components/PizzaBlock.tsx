@@ -1,11 +1,8 @@
 import { FC, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { IPizza, pizzaDoughTypes } from "src/types/pizza"
-import {
-  ICartItem,
-  addItem,
-  cartItemSelectorById,
-} from "../store/slices/cartSlice"
+import { ICartItem, IPizza, pizzaDoughTypes } from "src/types/pizza"
+import { addItem } from "../store/slices/cartSlice"
+import { cartItemSelectorById } from "src/store/selectors/cart"
 
 const typesDough: pizzaDoughTypes[] = ["тонкое", "традиционное"]
 
@@ -19,6 +16,7 @@ const PizzaBlock: FC<IPizza> = (props) => {
     sizes = [26, 30, 40],
     types = [0, 1],
   } = props
+
   const dispatch = useDispatch()
   const [activeSize, setActiveSize] = useState(0)
   const [activeType, setActiveType] = useState(0)

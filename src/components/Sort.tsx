@@ -2,7 +2,8 @@ import { FC, memo, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { SortItem } from "src/types/filter"
 import { Node } from "typescript"
-import { filterSelector, setSortType } from "../store/slices/filterSlice"
+import { setSortType } from "../store/slices/filterSlice"
+import { filterSelector } from "src/store/selectors/filter"
 
 export const list: SortItem[] = [
   { name: "популярности", sort: "rating" },

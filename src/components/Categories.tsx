@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
-import { filterSelector, setCategoryId } from "../store/slices/filterSlice"
+import { setCategoryId } from "../store/slices/filterSlice"
 import { FC, memo } from "react"
 import { pizzaCategories } from "src/types/pizza"
+import { filterSelector } from "src/store/selectors/filter"
 
-const categories: pizzaCategories[] = [
+export const categories: pizzaCategories[] = [
   "Все",
   "Мясные",
   "Вегетарианская",

@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { RootState } from "../store"
 import { SortItem } from "src/types/filter"
 
 export interface IFilterSliceState {
@@ -33,8 +32,6 @@ const filterSlice = createSlice({
     },
   },
 })
-
-export const filterSelector = (state: RootState) => state.filter
 
 export const { setCategoryId, setSortType, setFilters, setSearchValue } =
   filterSlice.actions

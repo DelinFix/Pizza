@@ -1,24 +1,6 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
-import { RootState } from "../store"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { IPizza } from "src/types/pizza"
-
-export interface FetchPizzasParams {
-  sortBy: string
-  order: string
-  category: string
-}
-
-export const fetchPizzas = createAsyncThunk<IPizza[], FetchPizzasParams>(
-  "pizza/fetchPizzas",
-  async (params) => {
-    const { sortBy, order, category } = params
-    const { data } = await axios.get<IPizza[]>(
-      `https://62911a9d665ea71fe1410ad2.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`
-    )
-    return data
-  }
-)
+import { fetchPizzas } from "src/utils/fetch"
 
 export interface IPizzarSliceState {
   items: IPizza[]
@@ -55,7 +37,5 @@ const pizzaSlice = createSlice({
 })
 
 export const { setItems } = pizzaSlice.actions
-
-export const pizzaSelector = (state: RootState) => state.pizza
 
 export default pizzaSlice.reducer

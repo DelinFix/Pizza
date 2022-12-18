@@ -1,15 +1,11 @@
 import { FC } from "react"
 import { useDispatch } from "react-redux"
-import { IPizzaInCart } from "src/types/pizza"
-import {
-  ICartItem,
-  addItem,
-  decrementItem,
-  removeItem,
-} from "../store/slices/cartSlice"
+import { ICartItem, IPizzaInCart } from "src/types/pizza"
+import { addItem, decrementItem, removeItem } from "../store/slices/cartSlice"
 
 const CartItem: FC<IPizzaInCart> = (props) => {
   const { id, title, type, price, size, count, imageUrl } = props
+
   const dispatch = useDispatch()
 
   const onIncrementPizza = () => {
