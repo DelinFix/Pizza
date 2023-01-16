@@ -5,6 +5,7 @@ import logoSvg from "../assets/img/pizza-logo.svg"
 import Search from "./Search"
 import { cartSelector } from "src/store/selectors/cart"
 
+//TODO svg, inCartPath
 const Header: FC = () => {
   const { items, totalPrice } = useSelector(cartSelector)
   const totalCount = items.reduce((sum, obj) => obj.count + sum, 0)
@@ -13,8 +14,8 @@ const Header: FC = () => {
 
   useEffect(() => {
     if (isMounted.current) {
-      const json = JSON.stringify(items)
-      localStorage.setItem("cart", json)
+      const cartJson = JSON.stringify(items)
+      localStorage.setItem("cart", cartJson)
     }
     isMounted.current = true
   }, [items])

@@ -6,6 +6,7 @@ import { cartItemSelectorById } from "src/store/selectors/cart"
 
 const typesDough: pizzaDoughTypes[] = ["тонкое", "традиционное"]
 
+//TODO setActive, svg, aded count
 const PizzaBlock: FC<IPizza> = (props) => {
   const {
     id,

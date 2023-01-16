@@ -12,6 +12,7 @@ import { Categories, PizzaBlock, Skeleton, Sort } from "../components/EXPORT"
 import { categories } from "src/components/Categories"
 import { list } from "src/components/Sort"
 
+//TODO add/fix comments, условный рендеринг поправить
 const Home: FC = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()

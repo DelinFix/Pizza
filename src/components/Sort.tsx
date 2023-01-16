@@ -11,6 +11,7 @@ export const list: SortItem[] = [
   { name: "алфавиту", sort: "title" },
 ]
 
+//TODO export list to file, list isActive fix
 type MouseClick = MouseEvent & { path: Node[] }
 
 const Sort: FC = () => {

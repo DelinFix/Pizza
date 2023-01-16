@@ -7,6 +7,8 @@ const Cart = lazy(() => import("./pages/Cart"))
 const NotFound = lazy(() => import("./pages/NotFound"))
 const MainLayout = lazy(() => import("./Layout/MainLayout"))
 
+//TODO create MainRouter
+
 function App() {
   return (
     <React.Suspense fallback={<div>Загрузка...</div>}>

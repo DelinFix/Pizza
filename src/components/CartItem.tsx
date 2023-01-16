@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux"
 import { ICartItem, IPizzaInCart } from "src/types/pizza"
 import { addItem, decrementItem, removeItem } from "../store/slices/cartSlice"
 
+//TODO Svg fix
+
 const CartItem: FC<IPizzaInCart> = (props) => {
   const { id, title, type, price, size, count, imageUrl } = props
 

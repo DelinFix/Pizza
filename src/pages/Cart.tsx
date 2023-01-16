@@ -6,10 +6,11 @@ import CartItem from "../components/CartItem"
 import { clearItems } from "../store/slices/cartSlice"
 import { cartSelector } from "src/store/selectors/cart"
 
+// TODO svg
 const Cart: FC = () => {
   const dispatch = useDispatch()
   const { totalPrice, items } = useSelector(cartSelector)
-  const totalCount: number = items.reduce((sum, obj) => obj.count + sum, 0)
+  const totalCount = items.reduce((sum, obj) => obj.count + sum, 0)
 
   const onClearPizzas = () => {
     dispatch(clearItems())

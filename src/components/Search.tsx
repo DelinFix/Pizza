@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { setSearchValue } from "../store/slices/filterSlice"
 import "../styles/Search.scss"
 
+//TODO svg
 const Search: FC = () => {
   const [value, setValue] = useState("")
   const dispatch = useDispatch()

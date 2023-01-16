@@ -24,13 +24,13 @@ const Categories: FC = () => {
   return (
     <div className="categories">
       <ul>
-        {categories.map((cat, index) => (
+        {categories.map((category, index) => (
           <li
             className={categoryIndex === index ? "active" : ""}
             onClick={onChangeCategory(index)}
             key={index}
           >
-            {cat}
+            {category}
           </li>
         ))}
       </ul>
