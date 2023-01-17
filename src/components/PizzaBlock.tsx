@@ -1,14 +1,20 @@
 import { FC, useState } from "react"
 import { useSelector } from "react-redux"
+
+//store
 import { cartItemSelectorById } from "src/store/selectors/cart"
 import { useAppDispatch } from "src/store/store"
-import { ICartItem, IPizza, pizzaDoughTypes } from "src/types/pizza"
 import { addItem } from "../store/slices/cartSlice"
+
+//types
+import { ICartItem, IPizza, pizzaTypes } from "src/types/pizza"
+
+//svg
 import IncrementIcon from "src/assets/svg/IncrementIcon"
 
-const typesDough: pizzaDoughTypes[] = ["тонкое", "традиционное"]
+//utils
+import { typesDough } from "src/utils/data"
 
-//TODO setActive, aded count
 const PizzaBlock: FC<IPizza> = (props) => {
     const {
         id,
@@ -40,6 +46,11 @@ const PizzaBlock: FC<IPizza> = (props) => {
         dispatch(addItem(item))
     }
 
+    const handleClickType = (type: pizzaTypes) => () => setActiveType(type)
+
+    const handleClickSize = (sizeIndex: number) => () =>
+        setActiveSize(sizeIndex)
+
     return (
         <div className="pizza-block-wrapper">
             <div className="pizza-block">
@@ -54,8 +65,8 @@ const PizzaBlock: FC<IPizza> = (props) => {
                         {types.map((type) => (
                             <li
                                 key={type}
-                                className={activeType === type ? "active" : ""}
-                                onClick={() => setActiveType(type)}
+                                className={`${activeType === type && "active"}`}
+                                onClick={handleClickType(type)}
                             >
                                 {typesDough[type]}
                             </li>
@@ -65,8 +76,10 @@ const PizzaBlock: FC<IPizza> = (props) => {
                         {sizes.map((size, index) => (
                             <li
                                 key={size}
-                                className={activeSize === index ? "active" : ""}
-                                onClick={() => setActiveSize(index)}
+                                className={`${
+                                    activeSize === index && "active"
+                                }`}
+                                onClick={handleClickSize(index)}
                             >
                                 {size} см.
                             </li>

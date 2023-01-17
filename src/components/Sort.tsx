@@ -1,18 +1,18 @@
 import { FC, memo, useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
+import { Node } from "typescript"
+
+//types
+import { SortItem } from "src/types/filter"
+
+//store
 import { filterSelector } from "src/store/selectors/filter"
 import { useAppDispatch } from "src/store/store"
-import { SortItem } from "src/types/filter"
-import { Node } from "typescript"
 import { setSortType } from "../store/slices/filterSlice"
 
-export const list: SortItem[] = [
-    { name: "популярности", sort: "rating" },
-    { name: "цене", sort: "price" },
-    { name: "алфавиту", sort: "title" },
-]
+//utils
+import { list } from "src/utils/data"
 
-//TODO export list to file, list isActive fix
 type MouseClick = MouseEvent & { path: Node[] }
 
 const Sort: FC = () => {
@@ -43,12 +43,13 @@ const Sort: FC = () => {
         setModalActive(false)
     }
 
+    const setModalInactive = () => {
+        setModalActive(!modalActive)
+    }
+
     return (
         <div ref={sortRef} className="sort">
-            <div
-                onClick={() => setModalActive(!modalActive)}
-                className="sort__label"
-            >
+            <div onClick={setModalInactive} className="sort__label">
                 <b>Сортировка по:</b>
                 <span>{sortType.name}</span>
             </div>
