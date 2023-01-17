@@ -5,15 +5,14 @@ import pizza from "./slices/pizzaSlice"
 import { useDispatch } from "react-redux"
 
 export const store = configureStore({
-  reducer: {
-    filter,
-    cart,
-    pizza,
-  },
+    reducer: {
+        filter,
+        cart,
+        pizza,
+    },
 })
 
 export type RootState = ReturnType<typeof store.getState>
 
-//TODO change all dispatch to AppDispatch
 type AppDispatch = typeof store.dispatch
 export const useAppDispatch = () => useDispatch<AppDispatch>()
