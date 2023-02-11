@@ -1,19 +1,17 @@
 import { FC, useState } from "react"
 import { useSelector } from "react-redux"
 
-//store
-import { cartItemSelectorById } from "src/store/selectors/cart"
-import { useAppDispatch } from "src/store/store"
-import { addItem } from "../store/slices/cartSlice"
+// store
+import { cartItemSelectorById, useAppDispatch, addItem } from "store"
 
-//types
-import { ICartItem, IPizza, pizzaTypes } from "src/types/pizza"
+// types
+import { ICartItem, IPizza, pizzaTypes } from "types"
 
-//svg
-import IncrementIcon from "src/assets/svg/IncrementIcon"
+// svg
+import { IncrementIcon } from "assets/icons"
 
-//utils
-import { typesDough } from "src/utils/data"
+// utils
+import { typesDough } from "utils"
 
 const PizzaBlock: FC<IPizza> = (props) => {
     const {

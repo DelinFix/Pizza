@@ -1,15 +1,13 @@
 import { FC } from "react"
 
-//types
-import { ICartItem, IPizzaInCart } from "src/types/pizza"
+// types
+import { ICartItem, IPizzaInCart } from "types"
 
-//store
-import { useAppDispatch } from "src/store/store"
-import { addItem, decrementItem, removeItem } from "../store/slices/cartSlice"
+// store
+import { useAppDispatch, addItem, decrementItem, removeItem } from "store"
 
-//svg
-import DecrementIcon from "src/assets/svg/DecrementIcon"
-import IncrementIcon from "src/assets/svg/IncrementIcon"
+// svg
+import { DecrementIcon, IncrementIcon } from "assets/icons"
 
 const CartItem: FC<IPizzaInCart> = (props) => {
     const { id, title, type, price, size, count, imageUrl } = props

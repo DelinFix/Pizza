@@ -1,14 +1,13 @@
 import debounce from "lodash.debounce"
 import { FC, useCallback, useState } from "react"
 
-//store
-import { useAppDispatch } from "src/store/store"
-import { setSearchValue } from "../store/slices/filterSlice"
+// store
+import { useAppDispatch, setSearchValue } from "store"
 
-//svg
-import SearchIcon from "src/assets/svg/SearchIcon"
+// svg
+import { SearchIcon } from "assets/icons"
 
-import "../styles/Search.scss"
+import "scss/Search.scss"
 
 const Search: FC = () => {
     const [value, setValue] = useState("")

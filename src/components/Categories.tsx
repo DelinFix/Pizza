@@ -1,18 +1,11 @@
 import { FC, memo } from "react"
 import { useSelector } from "react-redux"
-import { filterSelector } from "src/store/selectors/filter"
-import { useAppDispatch } from "src/store/store"
-import { pizzaCategories } from "src/types/pizza"
-import { setCategoryId } from "../store/slices/filterSlice"
 
-export const categories: pizzaCategories[] = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-]
+// store
+import { filterSelector, useAppDispatch, setCategoryId } from "store"
+
+// utils
+import { categories } from "utils"
 
 const Categories: FC = () => {
     const dispatch = useAppDispatch()

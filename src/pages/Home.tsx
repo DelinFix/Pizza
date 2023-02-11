@@ -3,22 +3,22 @@ import qs from "qs"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-//store
-import { useAppDispatch } from "src/store/store"
-import { setFilters } from "../store/slices/filterSlice"
-import { filterSelector } from "src/store/selectors/filter"
-import { pizzaSelector } from "src/store/selectors/pizza"
+// store
+import {
+    useAppDispatch,
+    setFilters,
+    filterSelector,
+    pizzaSelector,
+} from "store"
 
-//components
-import { Categories, PizzaBlock, Skeleton, Sort } from "../components/EXPORT"
-import { categories } from "src/components/Categories"
+// components
+import { Categories, PizzaBlock, Skeleton, Sort } from "components"
 
-//utils
-import { list } from "src/utils/data"
-import { fetchPizzas } from "src/utils/fetch"
+// utils
+import { categories, list, fetchPizzas } from "utils"
 
-//types
-import { IParams } from "src/types/filter"
+// types
+import { IParams } from "types"
 
 const Home: FC = () => {
     const dispatch = useAppDispatch()
@@ -42,7 +42,7 @@ const Home: FC = () => {
         window.scroll(0, 0)
     }, [categoryId, dispatch, sortType.sort])
 
-    //Если изменили параметры и был первый рендер
+    // Если изменили параметры и был первый рендер
     useEffect(() => {
         if (isMounted.current) {
             const queryStr = qs.stringify({

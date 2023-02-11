@@ -1,5 +1,5 @@
 import { FC, memo } from "react"
-import { IIconProps } from "./EXPORT"
+import { IIconProps } from "."
 
 const CartIcon: FC<IIconProps> = (props) => {
     const { width, className, ...rest } = props

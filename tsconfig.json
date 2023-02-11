@@ -15,18 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./",
-    "paths": {
-      "~hooks": ["src/hooks/EXPORT.ts"],
-
-      "~pages": ["src/pages/EXPORT.ts"],
-
-      "~components": ["src/components/EXPORT.ts"],
-
-      "~svg": ["src/assets/icons/EXPORT.ts"],
-      
-      "~types": ["src/types/EXPORT.ts"],
-    }
+    "baseUrl": "./src",
   },
   "include": ["src"],
   "exclude": ["node_modules"]

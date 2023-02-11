@@ -1,14 +1,15 @@
 import { FC, useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 import { Link, useLocation } from "react-router-dom"
-import Search from "./Search"
 
-//store
-import { cartSelector } from "src/store/selectors/cart"
+// components
+import { Search } from "components"
 
-//assets
-import logoSvg from "../assets/img/pizza-logo.svg"
-import CartIcon from "src/assets/svg/CartIcon"
+// store
+import { cartSelector } from "store"
+
+// svg
+import { CartIcon, PizzaLogoIcon } from "assets/icons"
 
 const Header: FC = () => {
     const { items, totalPrice } = useSelector(cartSelector)
@@ -31,7 +32,7 @@ const Header: FC = () => {
             <div className="container">
                 <Link to="/">
                     <div className="header__logo">
-                        <img width="38" src={logoSvg} alt="Pizza logo" />
+                        <PizzaLogoIcon width="38" />
                         <div>
                             <h1>React Pizza</h1>
                             <p>самая вкусная пицца во вселенной</p>

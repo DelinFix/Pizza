@@ -2,19 +2,14 @@ import { FC } from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
-//components
-import CartEmpty from "../components/CartEmpty"
-import CartItem from "../components/CartItem"
+// components
+import { CartEmpty, CartItem } from "components"
 
-//store
-import { cartSelector } from "src/store/selectors/cart"
-import { useAppDispatch } from "src/store/store"
-import { clearItems } from "../store/slices/cartSlice"
+// store
+import { cartSelector, useAppDispatch, clearItems } from "store"
 
-//svg
-import CartIcon from "src/assets/svg/CartIcon"
-import TrashIcon from "src/assets/svg/TrashIcon"
-import BackIcon from "src/assets/svg/BackIcon"
+// svg
+import { CartIcon, TrashIcon, BackIcon } from "assets/icons"
 
 const Cart: FC = () => {
     const dispatch = useAppDispatch()

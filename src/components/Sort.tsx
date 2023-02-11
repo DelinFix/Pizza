@@ -2,16 +2,14 @@ import { FC, memo, useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import { Node } from "typescript"
 
-//types
-import { SortItem } from "src/types/filter"
+// types
+import { SortItem } from "types"
 
-//store
-import { filterSelector } from "src/store/selectors/filter"
-import { useAppDispatch } from "src/store/store"
-import { setSortType } from "../store/slices/filterSlice"
+// store
+import { filterSelector, useAppDispatch, setSortType } from "store"
 
-//utils
-import { list } from "src/utils/data"
+// utils
+import { list } from "utils"
 
 type MouseClick = MouseEvent & { path: Node[] }
 

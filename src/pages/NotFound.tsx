@@ -1,12 +1,12 @@
 import { FC } from "react"
-import "../styles/NotFound.scss"
+import "scss/NotFound.scss"
 
 const NotFound: FC = () => {
-  return (
-    <div className="container">
-      <h1 className="root">Ничего не найдено</h1>
-    </div>
-  )
+    return (
+        <div className="container">
+            <h1 className="root">Ничего не найдено</h1>
+        </div>
+    )
 }
 
 export default NotFound

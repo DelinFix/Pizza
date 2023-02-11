@@ -1,7 +1,7 @@
 import { FC, memo } from "react"
-import { IIconProps } from "./EXPORT"
+import { IIconProps } from "."
 
-const IncrementIcon: FC<IIconProps> = (props) => {
+const DecrementIcon: FC<IIconProps> = (props) => {
     const { width, className, ...rest } = props
 
     return (
@@ -25,4 +25,4 @@ const IncrementIcon: FC<IIconProps> = (props) => {
     )
 }
 
-export default memo(IncrementIcon)
+export default memo(DecrementIcon)
